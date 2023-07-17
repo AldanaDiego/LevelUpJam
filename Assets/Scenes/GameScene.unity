@@ -134,7 +134,6 @@ GameObject:
   - component: {fileID: 46612637}
   - component: {fileID: 46612640}
   - component: {fileID: 46612639}
-  - component: {fileID: 46612638}
   m_Layer: 0
   m_Name: FishingHole
   m_TagString: Untagged
@@ -157,29 +156,6 @@ Transform:
   m_Father: {fileID: 1154616829}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &46612638
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 46612636}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!23 &46612639
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -743,7 +719,6 @@ GameObject:
   - component: {fileID: 1342083164}
   - component: {fileID: 1342083167}
   - component: {fileID: 1342083166}
-  - component: {fileID: 1342083165}
   m_Layer: 0
   m_Name: FloorPlane
   m_TagString: Untagged
@@ -766,28 +741,6 @@ Transform:
   m_Father: {fileID: 1154616829}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &1342083165
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1342083163}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &1342083166
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1093,6 +1046,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2142955125}
   - component: {fileID: 2142955124}
+  - component: {fileID: 2142955126}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1127,3 +1081,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2142955126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2142955123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ad0212cd0297204d97c63c4a2b0e772, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _foodPrefab: {fileID: 4358829116174194004, guid: 310e49234be4f744097646bd82a1347a, type: 3}
+  _spawnPosition: {x: 7, y: 0.5, z: -3}
