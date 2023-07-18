@@ -6,6 +6,7 @@ using System;
 public class FoodSpawner : MonoBehaviour
 {
     private const float SPAWN_COOLDOWN = 3f;
+    private const float COOLDOWN_START_VALUE = 2f;
     public const int START_FOOD_BLOCK_POS = -5;
     public const int LAST_FOOD_BLOCK_POS = 5;
 
@@ -19,11 +20,12 @@ public class FoodSpawner : MonoBehaviour
     {
         _isActive = false;
         _foodBlocks = new List<FoodBlock>();
-        _cooldownTimer = 0f;
+        _cooldownTimer = COOLDOWN_START_VALUE;
         FoodBlock.OnFoodBlockGrabbed += OnFoodBlockGrabbed;
         GameTimer timer = GameTimer.GetInstance();
         timer.OnGlobalTimerStarted += OnGlobalTimerStarted;
         timer.OnGlobalTimerEnded += OnGlobalTimerEnded;
+        GameEndMenuUI.OnGameRestart += OnGameRestart;
     }
 
     private void Update()
@@ -77,5 +79,15 @@ public class FoodSpawner : MonoBehaviour
     private void OnGlobalTimerEnded(object sender, EventArgs empty)
     {
         _isActive = false;
+    }
+
+    private void OnGameRestart(object sender, EventArgs empty)
+    {
+        foreach (FoodBlock foodBlock in _foodBlocks)
+        {
+            Destroy(foodBlock.gameObject);
+        }
+        _foodBlocks.Clear();
+        _cooldownTimer = COOLDOWN_START_VALUE;
     }
 }

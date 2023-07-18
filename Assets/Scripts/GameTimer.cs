@@ -20,6 +20,11 @@ public class GameTimer : Singleton<GameTimer>
         _isGlobalTimerRunning = false;
     }
 
+    private void Start()
+    {
+        GameEndMenuUI.OnGameRestart += OnGameRestart;
+    }
+
     private void Update()
     {
         if (_startTimer > 0 && !_isGlobalTimerRunning)
@@ -50,5 +55,12 @@ public class GameTimer : Singleton<GameTimer>
     public float GetGlobalTimer()
     {
         return _globalTimer;
+    }
+
+    private void OnGameRestart(object sender, EventArgs empty)
+    {
+        _isGlobalTimerRunning = false;
+        _globalTimer = 30f;
+        _startTimer = 4f;
     }
 }

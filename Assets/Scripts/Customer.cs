@@ -43,6 +43,7 @@ public class Customer : MonoBehaviour
     private IEnumerator MoveOut()
     {
         _goalTable.SetCanReceiveFood(false);
+        _transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         float moveOutSpeed = 5f;
         while (_transform.position.z < 15f)
         {

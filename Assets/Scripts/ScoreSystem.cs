@@ -12,11 +12,18 @@ public class ScoreSystem : MonoBehaviour
     {
         _score = 0;
         Customer.OnCustomerServed += OnCustomerServed;
+        GameEndMenuUI.OnGameRestart += OnGameRestart;
     }
 
     private void OnCustomerServed(object sender, int score)
     {
         _score = Math.Max(0, _score + score);
+        OnScoreChanged?.Invoke(this, _score);
+    }
+
+    private void OnGameRestart(object sender, EventArgs empty)
+    {
+        _score = 0;
         OnScoreChanged?.Invoke(this, _score);
     }
 }

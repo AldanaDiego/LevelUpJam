@@ -22,6 +22,7 @@ public class GlobalTimerUI : MonoBehaviour
         UpdateGlobalTimeText();
         _gameTimer.OnGlobalTimerStarted += OnGlobalTimerStarted;
         _gameTimer.OnGlobalTimerEnded += OnGlobalTimerEnded;
+        GameEndMenuUI.OnGameRestart += OnGameRestart;
     }
 
     private void Update()
@@ -58,5 +59,11 @@ public class GlobalTimerUI : MonoBehaviour
     private void OnGlobalTimerEnded(object sender, EventArgs empty)
     {
         _isGlobalTimerRunning = false;
+    }
+
+    private void OnGameRestart(object sender, EventArgs empty)
+    {
+        _isGlobalTimerRunning = false;
+        _hasTimerStarted = false;
     }
 }

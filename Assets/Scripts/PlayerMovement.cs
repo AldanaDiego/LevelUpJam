@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
         GameTimer timer = GameTimer.GetInstance();
         timer.OnGlobalTimerStarted += OnGlobalTimerStarted;
         timer.OnGlobalTimerEnded += OnGlobalTimerEnded;
+        GameEndMenuUI.OnGameRestart += OnGameRestart;
     }
 
     private void Update()
@@ -50,5 +51,11 @@ public class PlayerMovement : MonoBehaviour
     private void OnGlobalTimerEnded(object sender, EventArgs empty)
     {
         _isActive = false;
+    }
+
+    private void OnGameRestart(object sender, EventArgs empty)
+    {
+        _transform.position = Vector3.zero;
+        _transform.rotation = Quaternion.Euler(0f, 180f, 0f);
     }
 }

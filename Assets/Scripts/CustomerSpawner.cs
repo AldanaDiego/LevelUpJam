@@ -6,6 +6,7 @@ using System;
 public class CustomerSpawner : MonoBehaviour
 {
     private const float SPAWN_COOLDOWN = 5f;
+    private const float COOLDOWN_START_VALUE = 2f;
     private Vector3 SPAWN_OFFSET = new Vector3(0f, 0f, 5f);
 
     [SerializeField] private List<GoalTable> _goalTables;
@@ -13,13 +14,15 @@ public class CustomerSpawner : MonoBehaviour
 
     private float _cooldownTimer;
     private List<int> _availablePositions;
+    private List<Customer> _spawnedCustomers;
     private bool _isActive;
 
     private void Start()
     {
         _isActive = false;
-        _cooldownTimer = 0f;
+        _cooldownTimer = COOLDOWN_START_VALUE;
         _availablePositions = new List<int>();
+        _spawnedCustomers = new List<Customer>();
         for (int i = 0; i < _goalTables.Count; i++)
         {
             _availablePositions.Add(i);
@@ -27,6 +30,7 @@ public class CustomerSpawner : MonoBehaviour
         GameTimer timer = GameTimer.GetInstance();
         timer.OnGlobalTimerStarted += OnGlobalTimerStarted;
         timer.OnGlobalTimerEnded += OnGlobalTimerEnded;
+        GameEndMenuUI.OnGameRestart += OnGameRestart;
     }
 
     private void Update()
@@ -52,6 +56,7 @@ public class CustomerSpawner : MonoBehaviour
             Customer customer = Instantiate(_customerPrefab, spawnPosition, Quaternion.Euler(0f, 180f, 0f));
             customer.OnCustomerGone += OnCustomerGone;
             customer.Setup(position, _goalTables[position]);
+            _spawnedCustomers.Add(customer);
         }
     }
 
@@ -60,6 +65,7 @@ public class CustomerSpawner : MonoBehaviour
         Customer customer = (Customer) sender;
         customer.OnCustomerGone -= OnCustomerGone;
         _availablePositions.Add(position);
+        _spawnedCustomers.Remove(customer);
         Destroy(customer.gameObject);
     }
 
@@ -71,5 +77,20 @@ public class CustomerSpawner : MonoBehaviour
     private void OnGlobalTimerEnded(object sender, EventArgs empty)
     {
         _isActive = false;
+    }
+
+    private void OnGameRestart(object sender, EventArgs empty)
+    {
+        _availablePositions.Clear();
+        for (int i = 0; i < _goalTables.Count; i++)
+        {
+            _availablePositions.Add(i);
+        }
+        foreach (Customer customer in _spawnedCustomers)
+        {
+            Destroy(customer.gameObject);
+        }
+        _spawnedCustomers.Clear();
+        _cooldownTimer = COOLDOWN_START_VALUE;
     }
 }

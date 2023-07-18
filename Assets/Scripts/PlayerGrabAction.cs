@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PlayerGrabAction : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class PlayerGrabAction : MonoBehaviour
         _inputSystem = InputSystem.GetInstance();
         _foodBlock = null;
         _transform = transform;
+        GameEndMenuUI.OnGameRestart += OnGameRestart;
     }
 
     private void Update()
@@ -48,5 +50,14 @@ public class PlayerGrabAction : MonoBehaviour
                 }
             }
         }   
+    }
+
+    private void OnGameRestart(object sender, EventArgs empty)
+    {
+        if (_foodBlock != null)
+        {
+            Destroy(_foodBlock.gameObject);
+            _foodBlock = null;
+        }
     }
 }
