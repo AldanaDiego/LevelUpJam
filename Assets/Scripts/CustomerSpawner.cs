@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class CustomerSpawner : MonoBehaviour
 {
@@ -12,24 +13,32 @@ public class CustomerSpawner : MonoBehaviour
 
     private float _cooldownTimer;
     private List<int> _availablePositions;
+    private bool _isActive;
 
     private void Start()
     {
+        _isActive = false;
         _cooldownTimer = 0f;
         _availablePositions = new List<int>();
         for (int i = 0; i < _goalTables.Count; i++)
         {
             _availablePositions.Add(i);
         }
+        GameTimer timer = GameTimer.GetInstance();
+        timer.OnGlobalTimerStarted += OnGlobalTimerStarted;
+        timer.OnGlobalTimerEnded += OnGlobalTimerEnded;
     }
 
     private void Update()
     {
-        _cooldownTimer += Time.deltaTime;
-        if (_cooldownTimer >= SPAWN_COOLDOWN)
+        if (_isActive)
         {
-            _cooldownTimer -= SPAWN_COOLDOWN;
-            SpawnCustomer();
+            _cooldownTimer += Time.deltaTime;
+            if (_cooldownTimer >= SPAWN_COOLDOWN)
+            {
+                _cooldownTimer -= SPAWN_COOLDOWN;
+                SpawnCustomer();
+            }
         }
     }
 
@@ -37,7 +46,7 @@ public class CustomerSpawner : MonoBehaviour
     {
         if (_availablePositions.Count > 0)
         {
-            int position = _availablePositions[Random.Range(0, _availablePositions.Count)];
+            int position = _availablePositions[UnityEngine.Random.Range(0, _availablePositions.Count)];
             _availablePositions.Remove(position);
             Vector3 spawnPosition = _goalTables[position].transform.position + SPAWN_OFFSET;
             Customer customer = Instantiate(_customerPrefab, spawnPosition, Quaternion.Euler(0f, 180f, 0f));
@@ -52,5 +61,15 @@ public class CustomerSpawner : MonoBehaviour
         customer.OnCustomerGone -= OnCustomerGone;
         _availablePositions.Add(position);
         Destroy(customer.gameObject);
+    }
+
+    private void OnGlobalTimerStarted(object sender, EventArgs empty)
+    {
+        _isActive = true;
+    }
+
+    private void OnGlobalTimerEnded(object sender, EventArgs empty)
+    {
+        _isActive = false;
     }
 }

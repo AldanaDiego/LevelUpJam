@@ -13,23 +13,31 @@ public class FoodSpawner : MonoBehaviour
     [SerializeField] private Vector3 _spawnPosition;
     private List<FoodBlock> _foodBlocks;
     private float _cooldownTimer;
+    private bool _isActive;
 
     private void Start()
     {
+        _isActive = false;
         _foodBlocks = new List<FoodBlock>();
         _cooldownTimer = 0f;
         FoodBlock.OnFoodBlockGrabbed += OnFoodBlockGrabbed;
+        GameTimer timer = GameTimer.GetInstance();
+        timer.OnGlobalTimerStarted += OnGlobalTimerStarted;
+        timer.OnGlobalTimerEnded += OnGlobalTimerEnded;
     }
 
     private void Update()
     {
-        _cooldownTimer += Time.deltaTime;
-        if (_cooldownTimer >= SPAWN_COOLDOWN)
+        if (_isActive)
         {
-            _cooldownTimer -= SPAWN_COOLDOWN;
-            if (CanSpawn())
+            _cooldownTimer += Time.deltaTime;
+            if (_cooldownTimer >= SPAWN_COOLDOWN)
             {
-                SpawnFoodBlock();
+                _cooldownTimer -= SPAWN_COOLDOWN;
+                if (CanSpawn())
+                {
+                    SpawnFoodBlock();
+                }
             }
         }
     }
@@ -59,5 +67,15 @@ public class FoodSpawner : MonoBehaviour
     private void OnFoodBlockGrabbed(object sender, EventArgs empty)
     {
         StartCoroutine(SquashBlocksToLeft((FoodBlock) sender));
+    }
+
+    private void OnGlobalTimerStarted(object sender, EventArgs empty)
+    {
+        _isActive = true;
+    }
+
+    private void OnGlobalTimerEnded(object sender, EventArgs empty)
+    {
+        _isActive = false;
     }
 }
