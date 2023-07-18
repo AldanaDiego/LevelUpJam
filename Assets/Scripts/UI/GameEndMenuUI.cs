@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System;
 
 public class GameEndMenuUI : MonoBehaviour
@@ -18,12 +19,18 @@ public class GameEndMenuUI : MonoBehaviour
         GameTimer gameTimer = GameTimer.GetInstance();
         gameTimer.OnGlobalTimerEnded += OnGlobalTimerEnded;
         _replayButton.onClick.AddListener(OnReplayButtonClicked);
+        _quitButton.onClick.AddListener(OnQuitButtonClicked);
     }
 
-    public void OnReplayButtonClicked()
+    private void OnReplayButtonClicked()
     {
         _menuContainer.SetActive(false);
         OnGameRestart?.Invoke(this, EventArgs.Empty);
+    }
+
+    private void OnQuitButtonClicked()
+    {
+        SceneManager.LoadScene("TitleScene");
     }
 
     private void OnGlobalTimerEnded(object sender, EventArgs empty)
