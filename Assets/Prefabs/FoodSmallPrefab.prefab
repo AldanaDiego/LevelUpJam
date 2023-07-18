@@ -132,6 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _width: 1
+  _foodAmount: 1
   _rigidBody: {fileID: 9046398760653171197}
 --- !u!65 &8036623592272882052
 BoxCollider:

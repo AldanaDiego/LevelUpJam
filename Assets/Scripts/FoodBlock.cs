@@ -10,6 +10,7 @@ public class FoodBlock : MonoBehaviour
     public static event EventHandler OnFoodBlockGrabbed;
 
     [SerializeField] private int _width;
+    [SerializeField] private int _foodAmount;
     [SerializeField] private Rigidbody _rigidBody;
 
     private Transform _transform;
@@ -53,6 +54,11 @@ public class FoodBlock : MonoBehaviour
     public int GetWidth()
     {
         return _width;
+    }
+
+    public int GetFoodAmount()
+    {
+        return _foodAmount;
     }
 
     public void OnGrabbed(Transform playerGrab)

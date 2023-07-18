@@ -1,51 +1,76 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Customer : MonoBehaviour
 {
-    private Transform _transform;
-    private int _position;
-    private bool _isMoving;
-    private float _speed;
+    public event EventHandler<int> OnCustomerGone;
 
-    private void Start()
+    private Transform _transform;
+    private GoalTable _goalTable;
+    private int _position;
+    private bool _isMovingIn;
+    private int _foodNeeded;
+
+    public void Setup(int position, GoalTable goalTable)
     {
         _transform = transform;
+        _foodNeeded = 1; //TODO should be random
+        _position = position;
+        _goalTable = goalTable;
+        _goalTable.OnFoodBlockReceived += OnFoodBlockReceived;
+        StartCoroutine(MoveIn());
     }
 
-    private void Update()
+    private IEnumerator MoveIn()
     {
-        if (_isMoving)
+        _isMovingIn = true;
+        float moveInSpeed = -5f;
+        while (_isMovingIn)
         {
             _transform.position = new Vector3(
                 _transform.position.x,
                 _transform.position.y,
-                _transform.position.z + (_speed * Time.deltaTime)
+                _transform.position.z + (moveInSpeed * Time.deltaTime)
             );
+            yield return new WaitForFixedUpdate();
         }
+        _goalTable.SetCanReceiveFood(true);
     }
 
-    public void Setup(int position)
+    private IEnumerator MoveOut()
     {
-        _position = position;
-        MoveIn();
-    }
-
-    private void MoveIn()
-    {
-        _isMoving = true;
-        _speed = -5f;
-    }
-
-    private void MoveOut()
-    {
-        _isMoving = true;
-        _speed = 5f;
+        _goalTable.SetCanReceiveFood(false);
+        float moveOutSpeed = 5f;
+        while (_transform.position.z < 15f)
+        {
+            _transform.position = new Vector3(
+                _transform.position.x,
+                _transform.position.y,
+                _transform.position.z + (moveOutSpeed * Time.deltaTime)
+            );
+            yield return new WaitForFixedUpdate();
+        }
+        OnCustomerGone?.Invoke(this, _position);
     }
     
     private void OnTriggerEnter(Collider other)
     {
-        _isMoving = false;
+        _isMovingIn = false;
+    }
+
+    private void OnDestroy()
+    {
+        _goalTable.OnFoodBlockReceived -= OnFoodBlockReceived;
+    }
+
+    private void OnFoodBlockReceived(object sender, int foodAmount)
+    {
+        _foodNeeded -= foodAmount;
+        if (_foodNeeded <= 0)
+        {
+            StartCoroutine(MoveOut());
+        }
     }
 }

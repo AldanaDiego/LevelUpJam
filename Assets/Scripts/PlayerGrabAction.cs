@@ -38,9 +38,13 @@ public class PlayerGrabAction : MonoBehaviour
                     hit.collider.tag == "GoalTable"
                 )
                 {
-                    Destroy(_foodBlock.gameObject);
-                    _foodBlock = null;
-                    //TODO event
+                    GoalTable goal = hit.collider.GetComponent<GoalTable>();
+                    if (goal.CanReceiveFood())
+                    {
+                        goal.Receive(_foodBlock.GetFoodAmount());
+                        Destroy(_foodBlock.gameObject);
+                        _foodBlock = null;
+                    }
                 }
             }
         }   
