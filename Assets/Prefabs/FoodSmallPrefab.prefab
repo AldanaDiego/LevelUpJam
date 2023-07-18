@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 9046398760653171197}
   m_Layer: 0
   m_Name: FoodSmallPrefab
-  m_TagString: Untagged
+  m_TagString: FoodBlock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

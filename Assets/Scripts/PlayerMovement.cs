@@ -29,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
                 0f,
                 Mathf.Clamp(_transform.position.z + movement.y, MOVEMENT_BOUND_Z_DOWN, MOVEMENT_BOUND_Z_UP)
             );
+            _transform.forward = new Vector3(movement.x, 0f, movement.y).normalized;
         }    
     }
 }
