@@ -7,3 +7,4 @@ Game made in Unity for Level Up Game Jam 2023
 
 ## Credits
 - [HYPEPOLY - Isometric Tiles Standart Lite](https://assetstore.unity.com/packages/3d/environments/hypepoly-isometric-tiles-standart-lite-193779) by WAND AND CIRCLES
+- [Free Casual Music Pack](https://assetstore.unity.com/packages/audio/music/free-casual-music-pack-242591) by mk.matheusklein

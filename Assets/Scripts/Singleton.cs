@@ -10,7 +10,7 @@ public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour
     {
         if (Instance != null && Instance != this)
         {
-            Destroy(this);
+            Destroy(this.gameObject);
             return;
         }
         Instance = GetComponent<T>();
