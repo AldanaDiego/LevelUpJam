@@ -6,6 +6,7 @@ using System;
 public class Customer : MonoBehaviour
 {
     public event EventHandler<int> OnCustomerGone;
+    public static event EventHandler<int> OnCustomerServed;
 
     private Transform _transform;
     private GoalTable _goalTable;
@@ -70,6 +71,8 @@ public class Customer : MonoBehaviour
         _foodNeeded -= foodAmount;
         if (_foodNeeded <= 0)
         {
+            int score = (_foodNeeded == 0) ? 3 : _foodNeeded;
+            OnCustomerServed?.Invoke(this, score);
             StartCoroutine(MoveOut());
         }
     }

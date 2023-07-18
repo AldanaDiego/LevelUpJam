@@ -15,7 +15,7 @@ public class GameTimer : Singleton<GameTimer>
     protected override void Awake()
     {
         base.Awake();
-        _globalTimer = 15f;
+        _globalTimer = 30f;
         _startTimer = 4f;
         _isGlobalTimerRunning = false;
     }
