@@ -10,7 +10,7 @@ public class FoodSpawner : MonoBehaviour
     public const int START_FOOD_BLOCK_POS = -5;
     public const int LAST_FOOD_BLOCK_POS = 5;
 
-    [SerializeField] private FoodBlock _foodPrefab;
+    [SerializeField] private FoodBlock[] _foodPrefabs;
     [SerializeField] private Vector3 _spawnPosition;
     private List<FoodBlock> _foodBlocks;
     private float _cooldownTimer;
@@ -46,7 +46,8 @@ public class FoodSpawner : MonoBehaviour
 
     private void SpawnFoodBlock()
     {
-        FoodBlock foodBlock = Instantiate(_foodPrefab, _spawnPosition, Quaternion.identity);
+        FoodBlock prefab = _foodPrefabs[UnityEngine.Random.Range(0, _foodPrefabs.Length)];
+        FoodBlock foodBlock = Instantiate(prefab, _spawnPosition, Quaternion.identity);
         _foodBlocks.Add(foodBlock);
     }
 

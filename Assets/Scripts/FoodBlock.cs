@@ -9,7 +9,6 @@ public class FoodBlock : MonoBehaviour
 
     public static event EventHandler OnFoodBlockGrabbed;
 
-    [SerializeField] private int _width;
     [SerializeField] private int _foodAmount;
     [SerializeField] private Rigidbody _rigidBody;
 
@@ -45,15 +44,11 @@ public class FoodBlock : MonoBehaviour
         _canMove = false;
         _rigidBody.velocity = Vector3.zero;
         _transform.position = new Vector3(
-            Mathf.Round(_transform.position.x),
+            ((float) Math.Round((double) _transform.position.x, 1)),
             _transform.position.y,
             _transform.position.z
         );
-    }
-
-    public int GetWidth()
-    {
-        return _width;
+        
     }
 
     public int GetFoodAmount()

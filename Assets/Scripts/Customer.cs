@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 using System;
 
 public class Customer : MonoBehaviour
 {
     public event EventHandler<int> OnCustomerGone;
     public static event EventHandler<int> OnCustomerServed;
+
+    [SerializeField] private TextMeshPro _foodNeededText;
 
     private Transform _transform;
     private GoalTable _goalTable;
@@ -17,7 +20,8 @@ public class Customer : MonoBehaviour
     public void Setup(int position, GoalTable goalTable)
     {
         _transform = transform;
-        _foodNeeded = 1; //TODO should be random
+        _foodNeeded = UnityEngine.Random.Range(1, 6);
+        _foodNeededText.text = "";
         _position = position;
         _goalTable = goalTable;
         _goalTable.OnFoodBlockReceived += OnFoodBlockReceived;
@@ -37,12 +41,14 @@ public class Customer : MonoBehaviour
             );
             yield return new WaitForFixedUpdate();
         }
+        _foodNeededText.text = _foodNeeded.ToString();
         _goalTable.SetCanReceiveFood(true);
     }
 
     private IEnumerator MoveOut()
     {
         _goalTable.SetCanReceiveFood(false);
+        _foodNeededText.text = "";
         _transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         float moveOutSpeed = 5f;
         while (_transform.position.z < 15f)
@@ -75,6 +81,10 @@ public class Customer : MonoBehaviour
             int score = (_foodNeeded == 0) ? 3 : _foodNeeded;
             OnCustomerServed?.Invoke(this, score);
             StartCoroutine(MoveOut());
+        }
+        else
+        {
+            _foodNeededText.text = _foodNeeded.ToString();
         }
     }
 }
