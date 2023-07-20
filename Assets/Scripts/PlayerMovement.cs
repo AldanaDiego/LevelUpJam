@@ -9,8 +9,8 @@ public class PlayerMovement : MonoBehaviour
 
     private const float MOVEMENT_SPEED = 6.5f;
     private const float MOVEMENT_BOUND_X = 7f;
-    private const float MOVEMENT_BOUND_Z_UP = 5f;
-    private const float MOVEMENT_BOUND_Z_DOWN = -2f;
+    private const float MOVEMENT_BOUND_Z_UP = 4f;
+    private const float MOVEMENT_BOUND_Z_DOWN = -3f;
 
     private InputSystem _inputSystem;
     private Transform _transform;
