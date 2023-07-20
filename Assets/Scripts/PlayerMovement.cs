@@ -9,8 +9,8 @@ public class PlayerMovement : MonoBehaviour
 
     private const float MOVEMENT_SPEED = 6.5f;
     private const float MOVEMENT_BOUND_X = 7f;
-    private const float MOVEMENT_BOUND_Z_UP = 4f;
-    private const float MOVEMENT_BOUND_Z_DOWN = -3f;
+    private const float MOVEMENT_BOUND_Z_UP = 3.8f;
+    private const float MOVEMENT_BOUND_Z_DOWN = -3.8f;
 
     private InputSystem _inputSystem;
     private Transform _transform;
@@ -45,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
                     _isMoving = true;
                     OnMovementChanged?.Invoke(this, _isMoving);
                 }
-                movement = movement * (MOVEMENT_SPEED * Time.deltaTime);
+                movement = movement * (MOVEMENT_SPEED * Time.deltaTime); //TODO diagonal movement???
                 _transform.position = new Vector3(
                     Mathf.Clamp(_transform.position.x + movement.x, MOVEMENT_BOUND_X * -1, MOVEMENT_BOUND_X),
                     0f,

@@ -11,3 +11,4 @@ Game made in Unity for Level Up Game Jam 2023
 - [Crafting Mecanim Animation Pack FREE](https://assetstore.unity.com/packages/3d/animations/crafting-mecanim-animation-pack-free-45047) by Explosive
 - [Star Choco Font](https://fontesk.com/star-choco-font/) by Syafrizal a.k.a. Khurasan
 - [Strike Coffee Font](https://fontesk.com/strike-coffee-font/) by Syafrizal a.k.a. Khurasan
+- [Villager Animations FREE](https://assetstore.unity.com/packages/3d/animations/villager-animations-free-157920) by Kevin Iglesias

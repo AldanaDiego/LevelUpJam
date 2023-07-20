@@ -5,6 +5,8 @@ using System;
 
 public class FoodSpawner : MonoBehaviour
 {
+    public static event EventHandler OnFoodBlockSpawned;
+
     private const float SPAWN_COOLDOWN = 3f;
     private const float COOLDOWN_START_VALUE = 2f;
     public const int START_FOOD_BLOCK_POS = -5;
@@ -49,6 +51,7 @@ public class FoodSpawner : MonoBehaviour
         FoodBlock prefab = _foodPrefabs[UnityEngine.Random.Range(0, _foodPrefabs.Length)];
         FoodBlock foodBlock = Instantiate(prefab, _spawnPosition, Quaternion.identity);
         _foodBlocks.Add(foodBlock);
+        OnFoodBlockSpawned?.Invoke(this, EventArgs.Empty);
     }
 
     private bool CanSpawn()
