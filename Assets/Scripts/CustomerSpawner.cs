@@ -93,4 +93,9 @@ public class CustomerSpawner : MonoBehaviour
         _spawnedCustomers.Clear();
         _cooldownTimer = COOLDOWN_START_VALUE;
     }
+
+    private void OnDestroy()
+    {
+        GameEndMenuUI.OnGameRestart -= OnGameRestart;    
+    }
 }

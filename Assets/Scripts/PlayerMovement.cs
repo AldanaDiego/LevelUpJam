@@ -96,4 +96,9 @@ public class PlayerMovement : MonoBehaviour
         _isActive = false;
         _isMoving = false;
     }
+
+    private void OnDestroy()
+    {
+        GameEndMenuUI.OnGameRestart -= OnGameRestart;    
+    }
 }

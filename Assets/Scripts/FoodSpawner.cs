@@ -91,4 +91,10 @@ public class FoodSpawner : MonoBehaviour
         _foodBlocks.Clear();
         _cooldownTimer = COOLDOWN_START_VALUE;
     }
+
+    private void OnDestroy()
+    {
+        FoodBlock.OnFoodBlockGrabbed -= OnFoodBlockGrabbed;
+        GameEndMenuUI.OnGameRestart -= OnGameRestart;
+    }
 }

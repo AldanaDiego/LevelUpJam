@@ -26,4 +26,10 @@ public class ScoreSystem : MonoBehaviour
         _score = 0;
         OnScoreChanged?.Invoke(this, _score);
     }
+
+    private void OnDestroy()
+    {
+        Customer.OnCustomerServed -= OnCustomerServed;
+        GameEndMenuUI.OnGameRestart -= OnGameRestart;
+    }
 }

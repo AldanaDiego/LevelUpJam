@@ -68,4 +68,9 @@ public class GameTimer : Singleton<GameTimer>
         _globalTimer = 30f;
         _startTimer = 4f;
     }
+
+    private void OnDestroy()
+    {
+        GameEndMenuUI.OnGameRestart -= OnGameRestart;    
+    }
 }

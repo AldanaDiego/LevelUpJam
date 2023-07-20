@@ -66,4 +66,9 @@ public class GlobalTimerUI : MonoBehaviour
         _isGlobalTimerRunning = false;
         _hasTimerStarted = false;
     }
+
+    private void OnDestroy()
+    {
+        GameEndMenuUI.OnGameRestart -= OnGameRestart;    
+    }
 }

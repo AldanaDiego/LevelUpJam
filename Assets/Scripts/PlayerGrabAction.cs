@@ -66,4 +66,9 @@ public class PlayerGrabAction : MonoBehaviour
         }
 
     }
+
+    private void OnDestroy()
+    {
+        GameEndMenuUI.OnGameRestart -= OnGameRestart;    
+    }
 }

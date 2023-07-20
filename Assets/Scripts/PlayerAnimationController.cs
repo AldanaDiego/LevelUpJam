@@ -55,4 +55,9 @@ public class PlayerAnimationController : MonoBehaviour
     {
         _playerAnimator.SetBool("IsMoving", false);
     }
+
+    private void OnDestroy()
+    {
+        GameEndMenuUI.OnGameRestart -= OnGameRestart;    
+    }
 }
