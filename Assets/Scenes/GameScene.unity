@@ -1859,6 +1859,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fisherman
       objectReference: {fileID: 0}
+    - target: {fileID: 1630794972795428178, guid: b2f815f675608a54b8f6bfaec1c1bdd1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 427c818424d2cfb4aa88e7aa75960c60, type: 2}
     - target: {fileID: 5866666021909216657, guid: b2f815f675608a54b8f6bfaec1c1bdd1, type: 3}
       propertyPath: m_Controller
       value: 

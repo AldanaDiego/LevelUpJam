@@ -269,6 +269,11 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: b2f815f675608a54b8f6bfaec1c1bdd1, type: 3}
   m_PrefabInstance: {fileID: 9217499658654916749}
   m_PrefabAsset: {fileID: 0}
+--- !u!137 &7587048566999219679 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1630794972795428178, guid: b2f815f675608a54b8f6bfaec1c1bdd1, type: 3}
+  m_PrefabInstance: {fileID: 9217499658654916749}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8298527501326753244 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b2f815f675608a54b8f6bfaec1c1bdd1, type: 3}
@@ -287,6 +292,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _foodNeededText: {fileID: 3911169656893312277}
+  _bodyRenderer: {fileID: 7587048566999219679}
+  _clothMaterials:
+  - {fileID: 2100000, guid: 5ff299534e2bdda4390af0f9b6e93e36, type: 2}
+  - {fileID: 2100000, guid: d29c1ed2dd436b649b305604b49c3b5b, type: 2}
+  - {fileID: 2100000, guid: e14eb0f91271f9b4eb675820ffc0367d, type: 2}
+  - {fileID: 2100000, guid: 2483a220e8809424a9b3ea86e3c5b804, type: 2}
 --- !u!65 &-3810727263179264998
 BoxCollider:
   m_ObjectHideFlags: 0

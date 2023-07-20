@@ -11,6 +11,8 @@ public class Customer : MonoBehaviour
     public static event EventHandler<int> OnCustomerServed;
 
     [SerializeField] private TextMeshPro _foodNeededText;
+    [SerializeField] private Renderer _bodyRenderer;
+    [SerializeField] private List<Material> _clothMaterials;
 
     private Transform _transform;
     private GoalTable _goalTable;
@@ -21,6 +23,9 @@ public class Customer : MonoBehaviour
     public void Setup(int position, GoalTable goalTable)
     {
         _transform = transform;
+        Material[] materials = _bodyRenderer.materials;
+        materials[0] = _clothMaterials[UnityEngine.Random.Range(0, _clothMaterials.Count)];
+        _bodyRenderer.materials = materials;
         _foodNeeded = UnityEngine.Random.Range(1, 6);
         _foodNeededText.text = "";
         _position = position;
