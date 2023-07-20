@@ -7,6 +7,7 @@ using System;
 public class Customer : MonoBehaviour
 {
     public event EventHandler<int> OnCustomerGone;
+    public event EventHandler<bool> OnCustomerMovementChanged;
     public static event EventHandler<int> OnCustomerServed;
 
     [SerializeField] private TextMeshPro _foodNeededText;
@@ -32,6 +33,7 @@ public class Customer : MonoBehaviour
     {
         _isMovingIn = true;
         float moveInSpeed = -5f;
+        OnCustomerMovementChanged?.Invoke(this, true);
         while (_isMovingIn)
         {
             _transform.position = new Vector3(
@@ -49,8 +51,9 @@ public class Customer : MonoBehaviour
     {
         _goalTable.SetCanReceiveFood(false);
         _foodNeededText.text = "";
-        _transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+        _transform.rotation = Quaternion.Euler(0f, 0f, 0f); //TODO change for lerp?
         float moveOutSpeed = 5f;
+        OnCustomerMovementChanged?.Invoke(this, true);
         while (_transform.position.z < 15f)
         {
             _transform.position = new Vector3(
@@ -66,6 +69,7 @@ public class Customer : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         _isMovingIn = false;
+        OnCustomerMovementChanged?.Invoke(this, false);
     }
 
     private void OnDestroy()

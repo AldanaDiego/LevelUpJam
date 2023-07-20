@@ -243,7 +243,7 @@ PrefabInstance:
     - target: {fileID: 5866666021909216657, guid: b2f815f675608a54b8f6bfaec1c1bdd1, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 692db5baa85f31e4ba150704cfc6773d, type: 2}
+      objectReference: {fileID: 9100000, guid: eca2f911c6f8d3245b485ed502018bbf, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -260,7 +260,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b2f815f675608a54b8f6bfaec1c1bdd1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2759386028162902921}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b2f815f675608a54b8f6bfaec1c1bdd1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -3025085210041708012}
   m_SourcePrefab: {fileID: 100100000, guid: b2f815f675608a54b8f6bfaec1c1bdd1, type: 3}
+--- !u!95 &3351160480284122396 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: b2f815f675608a54b8f6bfaec1c1bdd1, type: 3}
+  m_PrefabInstance: {fileID: 9217499658654916749}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8298527501326753244 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b2f815f675608a54b8f6bfaec1c1bdd1, type: 3}
@@ -327,6 +335,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-3025085210041708012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8298527501326753244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf941124b036d294d9d6862c6657dcf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _customerAnimator: {fileID: 3351160480284122396}
 --- !u!4 &8674384124897937254 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b2f815f675608a54b8f6bfaec1c1bdd1, type: 3}

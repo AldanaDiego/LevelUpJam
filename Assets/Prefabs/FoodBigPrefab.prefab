@@ -133,6 +133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _foodAmount: 4
   _rigidBody: {fileID: 9046398760653171197}
+  _collider: {fileID: 8036623592272882052}
 --- !u!65 &8036623592272882052
 BoxCollider:
   m_ObjectHideFlags: 0

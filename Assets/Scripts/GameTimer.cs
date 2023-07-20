@@ -57,6 +57,11 @@ public class GameTimer : Singleton<GameTimer>
         return _globalTimer;
     }
 
+    public bool IsGlobalTimeRunning()
+    {
+        return _isGlobalTimerRunning;
+    }
+
     private void OnGameRestart(object sender, EventArgs empty)
     {
         _isGlobalTimerRunning = false;

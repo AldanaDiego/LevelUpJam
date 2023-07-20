@@ -5,6 +5,9 @@ using System;
 
 public class PlayerGrabAction : MonoBehaviour
 {
+    public event EventHandler OnBlockGrabbed;
+    public event EventHandler OnBlockDelivered;
+
     private const float GRAB_REACH = 1f;
     [SerializeField] private Transform _grabPoint;
     private InputSystem _inputSystem;
@@ -32,6 +35,7 @@ public class PlayerGrabAction : MonoBehaviour
                     FoodBlock foodBlock = hit.collider.GetComponent<FoodBlock>();
                     foodBlock.OnGrabbed(_grabPoint);
                     _foodBlock = foodBlock;
+                    OnBlockGrabbed?.Invoke(this, EventArgs.Empty);
                 }
             }
             else
@@ -46,6 +50,7 @@ public class PlayerGrabAction : MonoBehaviour
                         goal.Receive(_foodBlock.GetFoodAmount());
                         Destroy(_foodBlock.gameObject);
                         _foodBlock = null;
+                        OnBlockDelivered?.Invoke(this, EventArgs.Empty);
                     }
                 }
             }
@@ -59,5 +64,6 @@ public class PlayerGrabAction : MonoBehaviour
             Destroy(_foodBlock.gameObject);
             _foodBlock = null;
         }
+
     }
 }

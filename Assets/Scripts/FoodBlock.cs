@@ -11,6 +11,7 @@ public class FoodBlock : MonoBehaviour
 
     [SerializeField] private int _foodAmount;
     [SerializeField] private Rigidbody _rigidBody;
+    [SerializeField] private Collider _collider;
 
     private Transform _transform;
     private bool _canMove;
@@ -59,6 +60,7 @@ public class FoodBlock : MonoBehaviour
     public void OnGrabbed(Transform playerGrab)
     {
         _canMove = true;
+        _collider.enabled = false;
         _rigidBody.velocity = Vector3.zero;
         _transform.SetParent(playerGrab);
         _transform.localPosition = Vector3.zero;
