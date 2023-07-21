@@ -10,7 +10,6 @@ public class FishingParticleController : MonoBehaviour
 
     private void Start()
     {
-        GameTimer.GetInstance().OnGlobalTimerEnded += OnGlobalTimerEnded;
         GameEndMenuUI.OnGameRestart += OnGameRestart;
         FoodSpawner.OnFoodBlockSpawned += OnFoodBlockSpawned;
     }
@@ -18,7 +17,7 @@ public class FishingParticleController : MonoBehaviour
     private IEnumerator RestartRipple()
     {
         _rippleParticleSystem.Stop();
-        yield return new WaitForSeconds(0.65f);
+        yield return new WaitForSeconds(FishermanAnimationController.REEL_ROOD_TIME);
         _rippleParticleSystem.Play();
     }
 
@@ -28,19 +27,13 @@ public class FishingParticleController : MonoBehaviour
         StartCoroutine(RestartRipple());
     }
 
-    private void OnGlobalTimerEnded(object sender, EventArgs empty)
-    {
-        _rippleParticleSystem.Stop();
-    }
-
     private void OnGameRestart(object sender, EventArgs empty)
     {
-        _rippleParticleSystem.Play();
+        StartCoroutine(RestartRipple());
     }
 
     private void OnDestroy()
     {
-        GameTimer.GetInstance().OnGlobalTimerEnded -= OnGlobalTimerEnded;
         FoodSpawner.OnFoodBlockSpawned -= OnFoodBlockSpawned;
     }
 }
