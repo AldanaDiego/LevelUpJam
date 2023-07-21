@@ -11,6 +11,7 @@ public class Customer : MonoBehaviour
     public static event EventHandler<int> OnCustomerServed;
 
     [SerializeField] private TextMeshPro _foodNeededText;
+    [SerializeField] private SpriteRenderer _speechBubble;
     [SerializeField] private Renderer _bodyRenderer;
     [SerializeField] private List<Material> _clothMaterials;
 
@@ -28,6 +29,7 @@ public class Customer : MonoBehaviour
         _bodyRenderer.materials = materials;
         _foodNeeded = UnityEngine.Random.Range(1, 6);
         _foodNeededText.text = "";
+        _speechBubble.gameObject.SetActive(false);
         _position = position;
         _goalTable = goalTable;
         _goalTable.OnFoodBlockReceived += OnFoodBlockReceived;
@@ -49,6 +51,7 @@ public class Customer : MonoBehaviour
             yield return new WaitForFixedUpdate();
         }
         _foodNeededText.text = _foodNeeded.ToString();
+        _speechBubble.gameObject.SetActive(true);
         _goalTable.SetCanReceiveFood(true);
     }
 
@@ -56,6 +59,7 @@ public class Customer : MonoBehaviour
     {
         _goalTable.SetCanReceiveFood(false);
         _foodNeededText.text = "";
+        _speechBubble.gameObject.SetActive(false);
         _transform.rotation = Quaternion.Euler(0f, 0f, 0f); //TODO change for lerp?
         float moveOutSpeed = 5f;
         OnCustomerMovementChanged?.Invoke(this, true);
