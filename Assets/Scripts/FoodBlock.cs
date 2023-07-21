@@ -37,7 +37,10 @@ public class FoodBlock : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        StopMovement();
+        if (other.tag == "FoodBlock")
+        {
+            StopMovement();
+        }
     }
 
     private void StopMovement()

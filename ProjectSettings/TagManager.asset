@@ -6,6 +6,7 @@ TagManager:
   tags:
   - GoalTable
   - FoodBlock
+  - Pond
   layers:
   - Default
   - TransparentFX

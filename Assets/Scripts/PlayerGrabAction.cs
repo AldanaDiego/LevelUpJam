@@ -41,13 +41,22 @@ public class PlayerGrabAction : MonoBehaviour
             else
             {
                 if (Physics.Raycast(_transform.position, _transform.forward, out RaycastHit hit, GRAB_REACH) &&
-                    hit.collider.tag == "GoalTable"
+                    (hit.collider.tag == "GoalTable" || hit.collider.tag == "Pond")
                 )
                 {
-                    GoalTable goal = hit.collider.GetComponent<GoalTable>();
-                    if (goal.CanReceiveFood())
+                    if (hit.collider.tag == "GoalTable")
                     {
-                        goal.Receive(_foodBlock.GetFoodAmount());
+                        GoalTable goal = hit.collider.GetComponent<GoalTable>();
+                        if (goal.CanReceiveFood())
+                        {
+                            goal.Receive(_foodBlock.GetFoodAmount());
+                            Destroy(_foodBlock.gameObject);
+                            _foodBlock = null;
+                            OnBlockDelivered?.Invoke(this, EventArgs.Empty);
+                        }
+                    }
+                    else
+                    {
                         Destroy(_foodBlock.gameObject);
                         _foodBlock = null;
                         OnBlockDelivered?.Invoke(this, EventArgs.Empty);
