@@ -11,11 +11,12 @@ public class GameTimer : Singleton<GameTimer>
     private float _globalTimer;
     private float _startTimer;
     private bool _isGlobalTimerRunning;
+    private float _stageTimeAmount = 60f;
 
     protected override void Awake()
     {
         base.Awake();
-        _globalTimer = 30f;
+        _globalTimer = _stageTimeAmount;
         _startTimer = 4f;
         _isGlobalTimerRunning = false;
     }
@@ -65,7 +66,7 @@ public class GameTimer : Singleton<GameTimer>
     private void OnGameRestart(object sender, EventArgs empty)
     {
         _isGlobalTimerRunning = false;
-        _globalTimer = 30f;
+        _globalTimer = _stageTimeAmount;
         _startTimer = 4f;
     }
 

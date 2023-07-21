@@ -7,7 +7,7 @@ public class FoodSpawner : MonoBehaviour
 {
     public static event EventHandler OnFoodBlockSpawned;
 
-    private const float SPAWN_COOLDOWN = 3f;
+    private const float SPAWN_COOLDOWN = 2.5f;
     private const float COOLDOWN_START_VALUE = 2f;
     public const int START_FOOD_BLOCK_POS = -5;
     public const int LAST_FOOD_BLOCK_POS = 5;

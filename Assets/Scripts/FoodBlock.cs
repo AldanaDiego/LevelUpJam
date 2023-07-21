@@ -5,7 +5,7 @@ using System;
 
 public class FoodBlock : MonoBehaviour
 {
-    private const float START_ACCELERATION = -55f;
+    private const float START_ACCELERATION = -75f;
 
     public static event EventHandler OnFoodBlockGrabbed;
 
