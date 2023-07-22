@@ -18,8 +18,11 @@ public class GameEndMenuUI : MonoBehaviour
         _menuContainer.SetActive(false);
         GameTimer gameTimer = GameTimer.GetInstance();
         gameTimer.OnGlobalTimerEnded += OnGlobalTimerEnded;
+        AudioManager audioManager = AudioManager.GetInstance();
         _replayButton.onClick.AddListener(OnReplayButtonClicked);
         _quitButton.onClick.AddListener(OnQuitButtonClicked);
+        _replayButton.onClick.AddListener(audioManager.OnButtonClicked);
+        _quitButton.onClick.AddListener(audioManager.OnButtonClicked);
     }
 
     private void OnReplayButtonClicked()

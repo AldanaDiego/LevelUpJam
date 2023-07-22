@@ -13,3 +13,6 @@ Game made in Unity for Level Up Game Jam 2023
 - [Strike Coffee Font](https://fontesk.com/strike-coffee-font/) by Syafrizal a.k.a. Khurasan
 - [Villager Animations FREE](https://assetstore.unity.com/packages/3d/animations/villager-animations-free-157920) by Kevin Iglesias
 - [Input Buttons](https://greenpixels.itch.io/pixel-art-asset-3) by greenpixels_
+- [Game Interface Sound Pack](https://assetstore.unity.com/packages/audio/sound-fx/game-interface-sound-pack-147868) by Background Sounds
+- [FREE Casual Game SFX Pack](https://assetstore.unity.com/packages/audio/sound-fx/free-casual-game-sfx-pack-54116) by Dustyroom
+- [96 General Library (Free Sample Pack)](https://assetstore.unity.com/packages/audio/sound-fx/96-general-library-free-sample-pack-185157) by InspectorJ Sound Effects

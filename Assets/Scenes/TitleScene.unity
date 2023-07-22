@@ -2707,6 +2707,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e4440ecd4c639b458babd1738d8e655, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _fishSpawnSound: {fileID: 8300000, guid: 2c5292ba5cf254919a6b9e2b18e04f49, type: 3}
+  _deliverSound: {fileID: 8300000, guid: f96dd7b18d5d2424691c71b7dc1912d7, type: 3}
+  _customerSuccessSound: {fileID: 8300000, guid: 815d4a6099ebe184fb878bdb02ddd8a1, type: 3}
+  _customerFailSound: {fileID: 8300000, guid: 593c51c17ba2fd94fb124b9c0a2c78b1, type: 3}
+  _buttonSound: {fileID: 8300000, guid: 29bde6326b4c34ad8a12da475f79b50a, type: 3}
 --- !u!4 &914144033
 Transform:
   m_ObjectHideFlags: 0

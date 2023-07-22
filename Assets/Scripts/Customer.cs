@@ -8,7 +8,9 @@ public class Customer : MonoBehaviour
 {
     public event EventHandler<int> OnCustomerGone;
     public event EventHandler<bool> OnCustomerMovementChanged;
-    public static event EventHandler<int> OnCustomerServed;
+    public static event EventHandler OnCustomerServed;
+    public static event EventHandler OnCustomerSuccess;
+    public static event EventHandler OnCustomerFail;
 
     [SerializeField] private TextMeshPro _foodNeededText;
     [SerializeField] private SpriteRenderer _speechBubble;
@@ -91,12 +93,19 @@ public class Customer : MonoBehaviour
         _foodNeeded -= foodAmount;
         if (_foodNeeded <= 0)
         {
-            int score = (_foodNeeded == 0) ? 3 : _foodNeeded;
-            OnCustomerServed?.Invoke(this, score);
+            if (_foodNeeded == 0)
+            {
+                OnCustomerSuccess?.Invoke(this, EventArgs.Empty);
+            }
+            else
+            {
+                OnCustomerFail?.Invoke(this, EventArgs.Empty);
+            }
             StartCoroutine(MoveOut());
         }
         else
         {
+            OnCustomerServed?.Invoke(this, EventArgs.Empty);
             _foodNeededText.text = _foodNeeded.ToString();
         }
     }

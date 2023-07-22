@@ -15,8 +15,11 @@ public class TutorialMenuUI : MonoBehaviour
 
     private void Start()
     {
+        AudioManager audioManager = AudioManager.GetInstance();
         _leftButton.onClick.AddListener(OnLeftButtonClicked);
         _rightButton.onClick.AddListener(OnRightButtonClicked);
+        _leftButton.onClick.AddListener(audioManager.OnButtonClicked);
+        _rightButton.onClick.AddListener(audioManager.OnButtonClicked);
     }
 
     public void OnShow()

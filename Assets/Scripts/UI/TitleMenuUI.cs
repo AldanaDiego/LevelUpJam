@@ -21,10 +21,15 @@ public class TitleMenuUI : MonoBehaviour
 
     private void Start()
     {
+        AudioManager audioManager = AudioManager.GetInstance();
         _startButton.onClick.AddListener(OnStartButtonClicked);
         _tutorialButton.onClick.AddListener(OnTutorialButtonClicked);
         _tutorialCloseButton.onClick.AddListener(OnTutorialCloseButtonClicked);
         _exitButton.onClick.AddListener(OnExitButtonClicked);
+        _startButton.onClick.AddListener(audioManager.OnButtonClicked);
+        _tutorialButton.onClick.AddListener(audioManager.OnButtonClicked);
+        _tutorialCloseButton.onClick.AddListener(audioManager.OnButtonClicked);
+        _exitButton.onClick.AddListener(audioManager.OnButtonClicked);
         _tutorialMenuContainer.SetActive(false);
         _tutorialMenuUI = GetComponent<TutorialMenuUI>();
         ShowDefaultBackground();
