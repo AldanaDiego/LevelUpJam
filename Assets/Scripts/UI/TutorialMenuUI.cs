@@ -15,7 +15,7 @@ public class TutorialMenuUI : MonoBehaviour
 
     private void Start()
     {
-        AudioManager audioManager = AudioManager.GetInstance();
+        SFXAudioManager audioManager = SFXAudioManager.GetInstance();
         _leftButton.onClick.AddListener(OnLeftButtonClicked);
         _rightButton.onClick.AddListener(OnRightButtonClicked);
         _leftButton.onClick.AddListener(audioManager.OnButtonClicked);

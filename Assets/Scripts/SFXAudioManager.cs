@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class AudioManager : Singleton<AudioManager>
+public class SFXAudioManager : Singleton<SFXAudioManager>
 {
     [SerializeField] private AudioClip _fishSpawnSound;
     [SerializeField] private AudioClip _deliverSound;
@@ -11,7 +11,7 @@ public class AudioManager : Singleton<AudioManager>
     [SerializeField] private AudioClip _customerFailSound;
     [SerializeField] private AudioClip _buttonSound;
 
-    private AudioSource _audioSource;
+    private AudioSource _sfxAudioSource;
 
     protected override void Awake()
     {
@@ -21,7 +21,7 @@ public class AudioManager : Singleton<AudioManager>
 
     private void Start()
     {
-        _audioSource = GetComponent<AudioSource>();
+        _sfxAudioSource = GetComponent<AudioSource>();
         Customer.OnCustomerServed += OnCustomerServed;
         Customer.OnCustomerSuccess += OnCustomerSuccess;
         Customer.OnCustomerFail += OnCustomerFail;
@@ -30,26 +30,26 @@ public class AudioManager : Singleton<AudioManager>
 
     public void OnButtonClicked()
     {
-        _audioSource.PlayOneShot(_buttonSound);
+        _sfxAudioSource.PlayOneShot(_buttonSound);
     }
 
     private void OnCustomerServed(object sender, EventArgs empty)
     {
-        _audioSource.PlayOneShot(_deliverSound);
+        _sfxAudioSource.PlayOneShot(_deliverSound);
     }
 
     private void OnCustomerSuccess(object sender, EventArgs empty)
     {
-        _audioSource.PlayOneShot(_customerSuccessSound);
+        _sfxAudioSource.PlayOneShot(_customerSuccessSound);
     }
 
     private void OnCustomerFail(object sender, EventArgs empty)
     {
-        _audioSource.PlayOneShot(_customerFailSound);
+        _sfxAudioSource.PlayOneShot(_customerFailSound);
     }
 
     private void OnFoodBlockSpawned(object sender, EventArgs empty)
     {
-        _audioSource.PlayOneShot(_fishSpawnSound);
+        _sfxAudioSource.PlayOneShot(_fishSpawnSound);
     }
 }

@@ -18,7 +18,7 @@ public class GameEndMenuUI : MonoBehaviour
         _menuContainer.SetActive(false);
         GameTimer gameTimer = GameTimer.GetInstance();
         gameTimer.OnGlobalTimerEnded += OnGlobalTimerEnded;
-        AudioManager audioManager = AudioManager.GetInstance();
+        SFXAudioManager audioManager = SFXAudioManager.GetInstance();
         _replayButton.onClick.AddListener(OnReplayButtonClicked);
         _quitButton.onClick.AddListener(OnQuitButtonClicked);
         _replayButton.onClick.AddListener(audioManager.OnButtonClicked);
