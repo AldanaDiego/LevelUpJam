@@ -92,6 +92,7 @@ public class FishermanBobber : MonoBehaviour
     private void OnDestroy()
     {
         GameEndMenuUI.OnGameRestart -= OnGameRestart;
+        FoodSpawner.OnFoodBlockSpawned -= OnFoodBlockSpawned;
     }
 
 }

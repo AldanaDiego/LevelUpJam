@@ -23,13 +23,13 @@ public class Customer : MonoBehaviour
     private bool _isMovingIn;
     private int _foodNeeded;
 
-    public void Setup(int position, GoalTable goalTable)
+    public void Setup(int position, GoalTable goalTable, int foodNeeded)
     {
         _transform = transform;
         Material[] materials = _bodyRenderer.materials;
         materials[0] = _clothMaterials[UnityEngine.Random.Range(0, _clothMaterials.Count)];
         _bodyRenderer.materials = materials;
-        _foodNeeded = UnityEngine.Random.Range(1, 6);
+        _foodNeeded = foodNeeded;
         _foodNeededText.text = "";
         _speechBubble.gameObject.SetActive(false);
         _position = position;
@@ -65,7 +65,7 @@ public class Customer : MonoBehaviour
         _transform.rotation = Quaternion.Euler(0f, 0f, 0f); //TODO change for lerp?
         float moveOutSpeed = 5f;
         OnCustomerMovementChanged?.Invoke(this, true);
-        while (_transform.position.z < 15f)
+        while (_transform.position.z < 16f)
         {
             _transform.position = new Vector3(
                 _transform.position.x,

@@ -1513,7 +1513,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Amazing Game with no name yet
+  m_text: Hooked & Released
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 33a2f5c200dbd6b4780f8eeadc73bd38, type: 2}
   m_sharedMaterial: {fileID: 174648373915631199, guid: 33a2f5c200dbd6b4780f8eeadc73bd38, type: 2}

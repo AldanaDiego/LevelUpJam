@@ -5,8 +5,8 @@ using System;
 
 public class CustomerSpawner : MonoBehaviour
 {
-    private const float SPAWN_COOLDOWN = 5f;
-    private const float COOLDOWN_START_VALUE = 2f;
+    private const float SPAWN_COOLDOWN = 5.5f;
+    private const float COOLDOWN_START_VALUE = 2.5f;
     private Vector3 SPAWN_OFFSET = new Vector3(0f, 0f, 5f);
 
     [SerializeField] private List<GoalTable> _goalTables;
@@ -16,10 +16,12 @@ public class CustomerSpawner : MonoBehaviour
     private List<int> _availablePositions;
     private List<Customer> _spawnedCustomers;
     private bool _isActive;
+    private List<float> _foodNeedProbabilities;
 
     private void Start()
     {
         _isActive = false;
+        _foodNeedProbabilities = new List<float> { 0.25f, 0.5f, 0.7f, 0.9f, 1f };
         _cooldownTimer = COOLDOWN_START_VALUE;
         _availablePositions = new List<int>();
         _spawnedCustomers = new List<Customer>();
@@ -55,7 +57,7 @@ public class CustomerSpawner : MonoBehaviour
             Vector3 spawnPosition = _goalTables[position].transform.position + SPAWN_OFFSET;
             Customer customer = Instantiate(_customerPrefab, spawnPosition, Quaternion.Euler(0f, 180f, 0f));
             customer.OnCustomerGone += OnCustomerGone;
-            customer.Setup(position, _goalTables[position]);
+            customer.Setup(position, _goalTables[position], GenerateRandomFoodNeeded());
             _spawnedCustomers.Add(customer);
         }
     }
@@ -67,6 +69,19 @@ public class CustomerSpawner : MonoBehaviour
         _availablePositions.Add(position);
         _spawnedCustomers.Remove(customer);
         Destroy(customer.gameObject);
+    }
+
+    private int GenerateRandomFoodNeeded()
+    {
+        float random = UnityEngine.Random.value;
+        for (int i = 0; i < _foodNeedProbabilities.Count; i++)
+        {
+            if (random <= _foodNeedProbabilities[i])
+            {
+                return i + 1;
+            }
+        }
+        return 1;
     }
 
     private void OnGlobalTimerStarted(object sender, EventArgs empty)
