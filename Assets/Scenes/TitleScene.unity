@@ -3134,7 +3134,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Exit
+  m_text: Salir
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ef914401e2deef446b027385f3990ee0, type: 2}
   m_sharedMaterial: {fileID: -7807722063785765088, guid: ef914401e2deef446b027385f3990ee0, type: 2}
@@ -3470,7 +3470,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Settings
+  m_text: Opciones
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ef914401e2deef446b027385f3990ee0, type: 2}
   m_sharedMaterial: {fileID: -7807722063785765088, guid: ef914401e2deef446b027385f3990ee0, type: 2}
@@ -6821,7 +6821,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Start
+  m_text: Jugar
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ef914401e2deef446b027385f3990ee0, type: 2}
   m_sharedMaterial: {fileID: -7807722063785765088, guid: ef914401e2deef446b027385f3990ee0, type: 2}

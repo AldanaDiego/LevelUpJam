@@ -18,13 +18,18 @@ public class SettingsMenuUI : MonoBehaviour
     {
         _musicVolumeSlider.onValueChanged.AddListener(OnMusicVolumeSliderChanged);
         _sfxVolumeSlider.onValueChanged.AddListener(OnSFXVolumeSliderChanged);
+        
+        float musicVolume = PlayerPrefs.GetFloat("MusicVolume", 1f);
+        _audioMixer.SetFloat("MusicVolume", Mathf.Log10(musicVolume) * 20);
+        float sfxVolume = PlayerPrefs.GetFloat("SFXVolume", 1f);
+        _audioMixer.SetFloat("SFXVolume", Mathf.Log10(sfxVolume) * 20);
         StartCoroutine(CreateLanguageDropdown());
     }
 
     public void OnShow()
     {
-        _musicVolumeSlider.value = PlayerPrefs.GetFloat("MusicVolume", 1f);;
-        _sfxVolumeSlider.value = PlayerPrefs.GetFloat("SFXVolume", 1f);;
+        _musicVolumeSlider.value = PlayerPrefs.GetFloat("MusicVolume", 1f);
+        _sfxVolumeSlider.value = PlayerPrefs.GetFloat("SFXVolume", 1f);
     }
 
     private IEnumerator CreateLanguageDropdown()
