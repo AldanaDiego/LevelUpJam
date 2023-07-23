@@ -19,9 +19,9 @@ public class SettingsMenuUI : MonoBehaviour
         _musicVolumeSlider.onValueChanged.AddListener(OnMusicVolumeSliderChanged);
         _sfxVolumeSlider.onValueChanged.AddListener(OnSFXVolumeSliderChanged);
         
-        float musicVolume = PlayerPrefs.GetFloat("MusicVolume", 1f);
+        float musicVolume = PlayerPrefs.GetFloat("MusicVolume", 0.5f);
         _audioMixer.SetFloat("MusicVolume", Mathf.Log10(musicVolume) * 20);
-        float sfxVolume = PlayerPrefs.GetFloat("SFXVolume", 1f);
+        float sfxVolume = PlayerPrefs.GetFloat("SFXVolume", 0.5f);
         _audioMixer.SetFloat("SFXVolume", Mathf.Log10(sfxVolume) * 20);
         StartCoroutine(CreateLanguageDropdown());
     }
