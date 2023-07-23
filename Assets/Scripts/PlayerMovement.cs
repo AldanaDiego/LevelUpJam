@@ -45,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
                     _isMoving = true;
                     OnMovementChanged?.Invoke(this, _isMoving);
                 }
-                movement = Vector2.ClampMagnitude(movement, 1f) * (MOVEMENT_SPEED * Time.deltaTime); //TODO diagonal movement???
+                movement = Vector2.ClampMagnitude(movement, 1f) * (MOVEMENT_SPEED * Time.deltaTime);
                 _transform.position = new Vector3(
                     Mathf.Clamp(_transform.position.x + movement.x, MOVEMENT_BOUND_X * -1, MOVEMENT_BOUND_X),
                     0f,

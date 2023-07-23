@@ -6,6 +6,8 @@ using System;
 public class FoodSpawner : MonoBehaviour
 {
     public static event EventHandler OnFoodBlockSpawned;
+    public static event EventHandler OnFoodBlockDiscarded;
+    public static event EventHandler OnDiscardEnded;
 
     private const float SPAWN_COOLDOWN = 2.5f;
     private const float COOLDOWN_START_VALUE = 2f;
@@ -27,6 +29,7 @@ public class FoodSpawner : MonoBehaviour
         GameTimer timer = GameTimer.GetInstance();
         timer.OnGlobalTimerStarted += OnGlobalTimerStarted;
         timer.OnGlobalTimerEnded += OnGlobalTimerEnded;
+        timer.OnFiveSecondsLeft += OnFiveSecondsLeft;
         GameEndMenuUI.OnGameRestart += OnGameRestart;
     }
 
@@ -70,6 +73,19 @@ public class FoodSpawner : MonoBehaviour
         }
     }
 
+    private IEnumerator DiscardRemainingFood()
+    {
+        yield return new WaitForSeconds(0.5f);
+        foreach (FoodBlock foodBlock in _foodBlocks)
+        {
+            Destroy(foodBlock.gameObject);
+            OnFoodBlockDiscarded?.Invoke(this, EventArgs.Empty);
+            yield return new WaitForSeconds(1f);
+        }
+        _foodBlocks.Clear();
+        OnDiscardEnded?.Invoke(this, EventArgs.Empty);
+    }
+
     private void OnFoodBlockGrabbed(object sender, EventArgs empty)
     {
         StartCoroutine(SquashBlocksToLeft((FoodBlock) sender));
@@ -83,16 +99,18 @@ public class FoodSpawner : MonoBehaviour
     private void OnGlobalTimerEnded(object sender, EventArgs empty)
     {
         _isActive = false;
+        StartCoroutine(DiscardRemainingFood());
     }
 
     private void OnGameRestart(object sender, EventArgs empty)
     {
-        foreach (FoodBlock foodBlock in _foodBlocks)
-        {
-            Destroy(foodBlock.gameObject);
-        }
-        _foodBlocks.Clear();
+        
         _cooldownTimer = COOLDOWN_START_VALUE;
+    }
+
+    private void OnFiveSecondsLeft(object sender, EventArgs empty)
+    {
+        _isActive = false;
     }
 
     private void OnDestroy()

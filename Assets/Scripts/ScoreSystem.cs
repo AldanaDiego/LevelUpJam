@@ -15,25 +15,35 @@ public class ScoreSystem : MonoBehaviour
         Customer.OnCustomerSuccess += OnCustomerSuccess;
         Customer.OnCustomerFail += OnCustomerFail;
         GameEndMenuUI.OnGameRestart += OnGameRestart;
+        FoodSpawner.OnFoodBlockDiscarded += OnFoodBlockDiscarded;
+    }
+
+    private void AddScore(int amount)
+    {
+        _score += amount;
+        OnScoreChanged?.Invoke(this, new ScoreChangedParams(){Score = _score, ScoreDiff = amount});
+    }
+
+    private void SubstractScore(int amount)
+    {
+        int scoreDiff = (_score >= amount) ? amount * -1 : _score * -1;
+        _score = Math.Max(0, _score - amount);
+        OnScoreChanged?.Invoke(this, new ScoreChangedParams(){Score = _score, ScoreDiff = scoreDiff});
     }
 
     private void OnCustomerServed(object sender, EventArgs empty)
     {
-        _score += 1;
-        OnScoreChanged?.Invoke(this, new ScoreChangedParams(){Score = _score, ScoreDiff = 1});
+        AddScore(1);
     }
 
     private void OnCustomerSuccess(object sender, EventArgs empty)
     {
-        _score += 5;
-        OnScoreChanged?.Invoke(this, new ScoreChangedParams(){Score = _score, ScoreDiff = 5});
+        AddScore(5);
     }
 
     private void OnCustomerFail(object sender, EventArgs empty)
     {
-        int scoreDiff = (_score >= 3) ? -3 : _score * -1;
-        _score = Math.Max(0, _score - 3);
-        OnScoreChanged?.Invoke(this, new ScoreChangedParams(){Score = _score, ScoreDiff = scoreDiff});
+        SubstractScore(3);
     }
 
     private void OnGameRestart(object sender, EventArgs empty)
@@ -42,12 +52,18 @@ public class ScoreSystem : MonoBehaviour
         OnScoreChanged?.Invoke(this, new ScoreChangedParams(){Score = _score, ScoreDiff = 0});
     }
 
+    private void OnFoodBlockDiscarded(object sender, EventArgs empty)
+    {
+        SubstractScore(1);
+    }
+
     private void OnDestroy()
     {
         Customer.OnCustomerServed -= OnCustomerServed;
         Customer.OnCustomerSuccess -= OnCustomerSuccess;
         Customer.OnCustomerFail -= OnCustomerFail;
         GameEndMenuUI.OnGameRestart -= OnGameRestart;
+        FoodSpawner.OnFoodBlockDiscarded -= OnFoodBlockDiscarded;
     }
 
     public class ScoreChangedParams: EventArgs

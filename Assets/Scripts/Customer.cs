@@ -38,6 +38,11 @@ public class Customer : MonoBehaviour
         StartCoroutine(MoveIn());
     }
 
+    public void Leave()
+    {
+        StartCoroutine(MoveOut());
+    }
+
     private IEnumerator MoveIn()
     {
         _isMovingIn = true;

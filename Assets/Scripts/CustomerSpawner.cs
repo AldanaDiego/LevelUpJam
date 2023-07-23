@@ -32,6 +32,7 @@ public class CustomerSpawner : MonoBehaviour
         GameTimer timer = GameTimer.GetInstance();
         timer.OnGlobalTimerStarted += OnGlobalTimerStarted;
         timer.OnGlobalTimerEnded += OnGlobalTimerEnded;
+        timer.OnTenSecondsLeft += OnTenSecondsLeft;
         GameEndMenuUI.OnGameRestart += OnGameRestart;
     }
 
@@ -90,6 +91,15 @@ public class CustomerSpawner : MonoBehaviour
     }
 
     private void OnGlobalTimerEnded(object sender, EventArgs empty)
+    {
+        _isActive = false;
+        foreach (Customer customer in _spawnedCustomers)
+        {
+            customer.Leave();
+        }
+    }
+
+    private void OnTenSecondsLeft(object sender, EventArgs empty)
     {
         _isActive = false;
     }

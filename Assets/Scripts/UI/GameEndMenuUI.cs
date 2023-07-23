@@ -16,8 +16,7 @@ public class GameEndMenuUI : MonoBehaviour
     private void Start()
     {
         _menuContainer.SetActive(false);
-        GameTimer gameTimer = GameTimer.GetInstance();
-        gameTimer.OnGlobalTimerEnded += OnGlobalTimerEnded;
+        FoodSpawner.OnDiscardEnded += OnDiscardEnded;
         SFXAudioManager audioManager = SFXAudioManager.GetInstance();
         _replayButton.onClick.AddListener(OnReplayButtonClicked);
         _quitButton.onClick.AddListener(OnQuitButtonClicked);
@@ -36,8 +35,13 @@ public class GameEndMenuUI : MonoBehaviour
         SceneManager.LoadScene("TitleScene");
     }
 
-    private void OnGlobalTimerEnded(object sender, EventArgs empty)
+    private void OnDiscardEnded(object sender, EventArgs empty)
     {
         _menuContainer.SetActive(true);
+    }
+
+    private void OnDestroy()
+    {
+        FoodSpawner.OnDiscardEnded -= OnDiscardEnded;
     }
 }

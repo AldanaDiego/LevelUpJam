@@ -28,5 +28,6 @@ public class FishermanAnimationController : MonoBehaviour
     private void OnDestroy()
     {
         GameEndMenuUI.OnGameRestart -= OnGameRestart;
+        FoodSpawner.OnFoodBlockSpawned -= OnFoodBlockSpawned;
     }
 }
