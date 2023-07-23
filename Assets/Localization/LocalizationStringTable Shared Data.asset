@@ -79,6 +79,10 @@ MonoBehaviour:
     m_Key: SETTINGS_SFX_VOLUME
     m_Metadata:
       m_Items: []
+  - m_Id: 16732185255936
+    m_Key: SETTINGS_LANGUAGE
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -1,25 +1,56 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Settings;
 using UnityEngine.Audio;
 using UnityEngine.UI;
+using TMPro;
 
 public class SettingsMenuUI : MonoBehaviour
 {
     [SerializeField] private Slider _musicVolumeSlider;
     [SerializeField] private Slider _sfxVolumeSlider;
+    [SerializeField] private TMP_Dropdown _languageDropdown;
     [SerializeField] private AudioMixer _audioMixer;
 
     private void Start()
     {
         _musicVolumeSlider.onValueChanged.AddListener(OnMusicVolumeSliderChanged);
         _sfxVolumeSlider.onValueChanged.AddListener(OnSFXVolumeSliderChanged);
+        StartCoroutine(CreateLanguageDropdown());
     }
 
     public void OnShow()
     {
         _musicVolumeSlider.value = PlayerPrefs.GetFloat("MusicVolume", 1f);;
         _sfxVolumeSlider.value = PlayerPrefs.GetFloat("SFXVolume", 1f);;
+    }
+
+    private IEnumerator CreateLanguageDropdown()
+    {
+        yield return LocalizationSettings.InitializationOperation;
+
+        List<TMP_Dropdown.OptionData> options = new List<TMP_Dropdown.OptionData>();
+        int currentLocaleIndex = 0;
+        for (int i = 0; i < LocalizationSettings.AvailableLocales.Locales.Count; ++i)
+        {
+            Locale locale = LocalizationSettings.AvailableLocales.Locales[i];
+            if (LocalizationSettings.SelectedLocale == locale)
+            {
+                currentLocaleIndex = i;
+            }
+            options.Add(new TMP_Dropdown.OptionData(locale.name));
+        }
+        
+        _languageDropdown.options = options;
+        _languageDropdown.value = currentLocaleIndex;
+        _languageDropdown.onValueChanged.AddListener(OnLanguageLocaleChanged);
+    }
+
+    private void OnLanguageLocaleChanged(int index)
+    {
+        LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[index];
     }
 
     private void OnMusicVolumeSliderChanged(float value)
