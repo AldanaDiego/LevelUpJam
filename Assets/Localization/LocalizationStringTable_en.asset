@@ -55,7 +55,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1609932562432
-    m_Localized: Deliver fish to your customers!
+    m_Localized: Deliver as much fish as you can to your customers. You have one
+      minute!
     m_Metadata:
       m_Items: []
   - m_Id: 2308758134784

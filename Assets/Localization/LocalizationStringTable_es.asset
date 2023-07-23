@@ -55,7 +55,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1609932562432
-    m_Localized: "\xA1Entrega los peces a tus clientes!"
+    m_Localized: "Entrega tantos peces como puedas a tus clientes. \xA1Tienes un
+      minuto!"
     m_Metadata:
       m_Items: []
   - m_Id: 2308758134784
