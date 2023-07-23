@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System;
 
 public class SFXAudioManager : Singleton<SFXAudioManager>
@@ -10,6 +11,7 @@ public class SFXAudioManager : Singleton<SFXAudioManager>
     [SerializeField] private AudioClip _customerSuccessSound;
     [SerializeField] private AudioClip _customerFailSound;
     [SerializeField] private AudioClip _buttonSound;
+    [SerializeField] private AudioClip _clockTickSound;
 
     private AudioSource _sfxAudioSource;
 
@@ -26,6 +28,7 @@ public class SFXAudioManager : Singleton<SFXAudioManager>
         Customer.OnCustomerSuccess += OnCustomerSuccess;
         Customer.OnCustomerFail += OnCustomerFail;
         FoodSpawner.OnFoodBlockSpawned += OnFoodBlockSpawned;
+        SceneManager.sceneLoaded += OnSceneChanged;
     }
 
     public void OnButtonClicked()
@@ -51,5 +54,19 @@ public class SFXAudioManager : Singleton<SFXAudioManager>
     private void OnFoodBlockSpawned(object sender, EventArgs empty)
     {
         _sfxAudioSource.PlayOneShot(_fishSpawnSound);
+    }
+
+    private void OnTenSecondsLeft(object sender, EventArgs empty)
+    {
+        _sfxAudioSource.PlayOneShot(_clockTickSound);
+    }
+
+    private void OnSceneChanged(Scene scene, LoadSceneMode sceneMode)
+    {
+        GameTimer timer = GameTimer.GetInstance();
+        if (timer != null)
+        {
+            timer.OnTenSecondsLeft += OnTenSecondsLeft;
+        }
     }
 }

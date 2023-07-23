@@ -51,7 +51,7 @@ public class GameTimer : Singleton<GameTimer>
                 _hasTriggeredTenSecondsLeft = true;
                 OnTenSecondsLeft?.Invoke(this, EventArgs.Empty);
             }
-            if (!_hasTriggeredFiveSecondsLeft && _globalTimer <= 7f)
+            if (!_hasTriggeredFiveSecondsLeft && _globalTimer <= 7.5f)
             {
                 _hasTriggeredFiveSecondsLeft = true;
                 OnFiveSecondsLeft?.Invoke(this, EventArgs.Empty);

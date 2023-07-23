@@ -64,8 +64,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 3515799134208
-    m_Localized: A veces puedes llenarte de peces que no necesitas. En esos casos
-      puedes devolverlos al agua.
+    m_Localized: Cuando quede poco tiempo los clientes dejaran de venir. Aprovecha
+      el tiempo restante para devolver los peces restantes al agua.
     m_Metadata:
       m_Items: []
   - m_Id: 3836701138944

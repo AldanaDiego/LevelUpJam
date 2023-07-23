@@ -22,6 +22,7 @@ public class GlobalTimerUI : MonoBehaviour
         UpdateGlobalTimeText();
         _gameTimer.OnGlobalTimerStarted += OnGlobalTimerStarted;
         _gameTimer.OnGlobalTimerEnded += OnGlobalTimerEnded;
+        _gameTimer.OnTenSecondsLeft += OnTenSecondsLeft;
         GameEndMenuUI.OnGameRestart += OnGameRestart;
     }
 
@@ -51,6 +52,7 @@ public class GlobalTimerUI : MonoBehaviour
 
     private void OnGlobalTimerStarted(object sender, EventArgs empty)
     {
+        _globalTimerText.color = Color.black;
         _isGlobalTimerRunning = true;
         _hasTimerStarted = true;
         _startCountdownText.text = "";
@@ -65,6 +67,11 @@ public class GlobalTimerUI : MonoBehaviour
     {
         _isGlobalTimerRunning = false;
         _hasTimerStarted = false;
+    }
+
+    private void OnTenSecondsLeft(object sender, EventArgs empty)
+    {
+        _globalTimerText.color = Color.red;
     }
 
     private void OnDestroy()

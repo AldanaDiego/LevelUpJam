@@ -4766,6 +4766,7 @@ MonoBehaviour:
   _customerSuccessSound: {fileID: 8300000, guid: 815d4a6099ebe184fb878bdb02ddd8a1, type: 3}
   _customerFailSound: {fileID: 8300000, guid: 593c51c17ba2fd94fb124b9c0a2c78b1, type: 3}
   _buttonSound: {fileID: 8300000, guid: 29bde6326b4c34ad8a12da475f79b50a, type: 3}
+  _clockTickSound: {fileID: 8300000, guid: c5e2a73ad4706440f93bf05df0b465fe, type: 3}
 --- !u!4 &914144033
 Transform:
   m_ObjectHideFlags: 0

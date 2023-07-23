@@ -64,8 +64,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 3515799134208
-    m_Localized: Sometimes you'll get full of fish that you don't need. On those
-      cases you can return them to the water.
+    m_Localized: When there is little time left, customers will stop coming. You
+      should return all the remaining fish to the water before the time ends.
     m_Metadata:
       m_Items: []
   - m_Id: 3836701138944
