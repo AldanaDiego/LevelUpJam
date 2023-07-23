@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: LocalizationStringTable_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 9923667b3dd4a78478c42626779f7e9e, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 26729603072
+    m_Localized: Start
+    m_Metadata:
+      m_Items: []
+  - m_Id: 154802675712
+    m_Localized: Tutorial
+    m_Metadata:
+      m_Items: []
+  - m_Id: 224860135424
+    m_Localized: Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 319009677312
+    m_Localized: Exit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 395954184192
+    m_Localized: Replay
+    m_Metadata:
+      m_Items: []
+  - m_Id: 663592722432
+    m_Localized: Quit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1110491619328
+    m_Localized: 'Move:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1169652277248
+    m_Localized: or
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1213038157824
+    m_Localized: 'Grab/Deliver:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1609932562432
+    m_Localized: Deliver fish to your customers!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2308758134784
+    m_Localized: Fish comes in different sizes. You can deliver fish to a customer
+      as many times as needed, but don't give them more than they need.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3515799134208
+    m_Localized: Sometimes you'll get full of fish that you don't need. On those
+      cases you can return them to the water.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3836701138944
+    m_Localized: 'Score:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9355671199744
+    m_Localized: Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9427364438016
+    m_Localized: Music Volume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9555802415104
+    m_Localized: Sound Effect Volume
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

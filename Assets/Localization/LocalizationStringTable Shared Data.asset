@@ -1,0 +1,92 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: LocalizationStringTable Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: LocalizationStringTable
+  m_TableCollectionNameGuidString: 9923667b3dd4a78478c42626779f7e9e
+  m_Entries:
+  - m_Id: 26729603072
+    m_Key: BUTTON_START
+    m_Metadata:
+      m_Items: []
+  - m_Id: 154802675712
+    m_Key: BUTTON_TUTORIAL
+    m_Metadata:
+      m_Items: []
+  - m_Id: 224860135424
+    m_Key: BUTTON_SETTINGS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 319009677312
+    m_Key: BUTTON_EXIT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 395954184192
+    m_Key: BUTTON_REPLAY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 663592722432
+    m_Key: BUTTON_QUIT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1110491619328
+    m_Key: TUTORIAL_MOVE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1169652277248
+    m_Key: TUTORIAL_OR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1213038157824
+    m_Key: TUTORIAL_GRAB_DELIVER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1609932562432
+    m_Key: TUTORIAL_OBJECTIVE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2308758134784
+    m_Key: TUTORIAL_FISH_SIZES
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3515799134208
+    m_Key: TUTORIAL_FISH_RELEASE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3836701138944
+    m_Key: UI_SCORE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9355671199744
+    m_Key: SETTINGS_TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9427364438016
+    m_Key: SETTINGS_MUSIC_VOLUME
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9555802415104
+    m_Key: SETTINGS_SFX_VOLUME
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 5632131186598084632
+  references:
+    version: 2
+    RefIds:
+    - rid: 5632131186598084632
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1690071141429

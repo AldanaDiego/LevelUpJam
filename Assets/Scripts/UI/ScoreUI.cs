@@ -15,6 +15,6 @@ public class ScoreUI : MonoBehaviour
 
     private void OnScoreChanged(object sender, int newScore)
     {
-        _scoreText.text = $"Score: {newScore}";
+        _scoreText.text = $"{newScore}";
     }
 }
